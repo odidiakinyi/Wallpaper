@@ -1,31 +1,41 @@
 import React from "react";
 import { Search, X } from "lucide-react";
+import "../styles.css";
 
 const SearchBar = ({ search, setSearch }) => {
   return (
-    <div className="flex justify-center my-8">
-      <div className="relative w-full md:w-1/2">
+    <div className="modern-search-container">
+      <div className="modern-search-wrapper">
+        {/* Background Glow Effect */}
+        <div className="modern-search-glow" />
 
-        {/* ICON */}
-        <Search className="absolute left-3 top-3 text-gray-400" size={18} />
+        {/* Main Search Container */}
+        <div className="modern-search-input-container">
+          {/* Search Icon */}
+          <div className="modern-search-icon">
+            <Search size={18} />
+          </div>
 
-        {/* INPUT */}
-        <input
-          type="text"
-          placeholder="Search wallpapers..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-10 pr-10 py-3 rounded-full bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
-        />
-
-        {/* CLEAR BUTTON */}
-        {search && (
-          <X
-            className="absolute right-3 top-3 text-gray-400 cursor-pointer hover:text-white"
-            size={18}
-            onClick={() => setSearch("")}
+          {/* Input Field */}
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search wallpapers..."
+            className="modern-search-input"
           />
-        )}
+
+          {/* Clear Button */}
+          {search && (
+            <button
+              onClick={() => setSearch("")}
+              className="modern-search-clear"
+              aria-label="Clear search"
+            >
+              <X size={16} />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
